@@ -12,7 +12,7 @@
                 <th>Due Date</th>
             </tr>
             <tr *ngIf="showDaily">
-                <td style="font-size:15px ;">Daily</td>
+                <td style="font-size:15px ;">Daily <p>(Excluding Sat and Sun)</p></td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
                 <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
@@ -24,7 +24,7 @@
                 </td>
             </tr>
             <tr *ngIf="showWeekly">
-                <td style="font-size:15px ;">Weekly</td>
+                <td style="font-size:15px ;">Weekly <p>(Including selected days of the week only)</p></td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
                 <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
@@ -36,7 +36,7 @@
                 </td>
             </tr>
             <tr *ngIf="showMonthly">
-                <td style="font-size:15px ;">Monthly</td>
+                <td style="font-size:15px ;">Monthly <p>( Same day as of Start day of selected month(s) )</p></td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
                 <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
@@ -48,7 +48,7 @@
                 </td>
             </tr>
             <tr *ngIf="showRandomWeekly">
-                <td style="font-size:15px ;">Random (Weekly)</td>
+                <td style="font-size:15px ;">Random (Weekly)<p>( Random 2 dates )</p></td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
                 <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
@@ -58,7 +58,7 @@
                 </td>
             </tr>
             <tr *ngIf="showRandomMonthly">
-                <td style="font-size:15px ;">Random (Monthly)</td>
+                <td style="font-size:15px ;">Random (Monthly)<p><p>( Random 5 dates from month )</p></p></td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
                 <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
