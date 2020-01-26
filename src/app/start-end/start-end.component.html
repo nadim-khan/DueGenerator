@@ -1,0 +1,45 @@
+<mat-card >
+    <mat-card-header>
+        <mat-card-title >Select the dates to Generate Report</mat-card-title>
+    </mat-card-header>
+    <form  [formGroup]="startEndForm" (ngSubmit)="onSetDates()" >
+        <mat-card-content >
+            <span>STARTS FROM : </span>  
+            <mat-form-field class="full-width">                
+                <input matInput [matDatepicker]="startDatepicker" formControlName="startDate" required
+                 [matDatepickerFilter]="dateFilter" [value]="date.value"
+                (keyup)="dateFilter($event.target.value,'start')"
+                (dateInput)="addStartEvent('input', $event)" 
+                (dateChange)="addStartEvent('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatepicker></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-radio-group aria-label="Select an option" formControlName="choice" required>
+                <mat-radio-button value="calender" (click)="calRadio()" class="half-width" >
+                    <span>END BY : </span>  
+                    <mat-form-field>                
+                        <input matInput [matDatepicker]="endByDatepicker" [disabled]="disableCal" formControlName="endDate" 
+                        [min]="endMinDate"  [matDatepickerFilter]="dateFilter" 
+                        (dateInput)="addEndEvent('input', $event)" (dateChange)="addEndEvent('change', $event)">
+                        <mat-datepicker-toggle matSuffix [for]="endByDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endByDatepicker></mat-datepicker>
+                    </mat-form-field>
+                </mat-radio-button>
+                <mat-radio-button value="occur" (click)="occurRadio()" style="padding-left:20px;">
+                    <span>End After : </span> 
+                    <mat-form-field class="other"  >
+                        <input matInput type="number" min="0" [disabled]="disableOccur" formControlName="occurences" >
+                    </mat-form-field>
+                    <span style="padding-left:20px">Occurences </span> 
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions align="center">
+            <button  mat-raised-button  type="submit"  [disabled]="!startEndForm.value.choice"color="primary">Save <mat-icon>save</mat-icon></button>
+        </mat-card-actions>
+    </form>
+    <div class="example-events" hidden>
+        <div *ngFor="let e of events">{{e}}</div>
+      </div>
+</mat-card>

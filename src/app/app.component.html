@@ -1,0 +1,63 @@
+<mat-toolbar  class="navbar" class="mat-elevation-z3">
+    <mat-icon (click)="sidenav.toggle()" [routerLink]="['/']">reorder</mat-icon>
+		<span>
+      <a mat-button color="primary" [routerLink]="['/startEndSet']">Start and End Date</a>
+      <a mat-button color="primary" [routerLink]="['/weeklyOff']">Weekly Off</a>
+      <a mat-button color="primary" [routerLink]="['/frequency']">Frequency</a>
+      <a mat-button color="primary" [routerLink]="['/results']">Results</a>
+    </span>
+    <div class="logo">Due Date Generater</div>
+</mat-toolbar>
+<mat-sidenav-container color="primary" >
+    <mat-sidenav opened='true'  mode="side" #sidenav class="sidenav-fab-container" fullscreen >
+      <a class="top" mat-button color="accent" [routerLink]="['/startEndSet']">Start and End Date</a>
+		  <a mat-button color="accent" [routerLink]="['/weeklyOff']">Weekly Off</a>
+      <a mat-button color="accent" [routerLink]="['/frequency']">Frequency</a>
+      <a mat-button color="accent" [routerLink]="['/results']">Results</a>
+    </mat-sidenav>
+    <mat-sidenav-content> 
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!-- <mat-toolbar color="transparent" class="navbar">
+  <mat-icon (click)="sidenav.toggle()" color="primary">reorder</mat-icon>
+  <div class="logo">Due Date Generater</div>
+  <div class="menus">
+    <a mat-flat-button [routerLink]="['/home']">Home</a>
+    <button mat-flat-button  [matMenuTriggerFor]="appMenu">Courses</button>
+    <a mat-flat-button [routerLink]="['/uploads']">Upload</a>
+    <button mat-flat-button >About</button> -->
+    <!-- <button mat-fab (click)="opened=!opened"color="primary">toggle</button>
+    <button mat-fab (click)="sidenav.open()"color="primary">open</button>
+    <button mat-fab (click)="sidenav.close()"color="primary">close</button> -->
+    
+  <!-- </div>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="fMenu">Frontend</button>
+  <button mat-menu-item [matMenuTriggerFor]="bMenu">Backend</button>
+  <button mat-menu-item [matMenuTriggerFor]="fMenu">Frontend</button>
+  <button mat-menu-item [matMenuTriggerFor]="bMenu">Backend</button>
+</mat-menu>
+
+<mat-menu #fMenu="matMenu" xPosition="before" yPosition="below"> 
+  <button mat-menu-item>Vue</button>
+  <button mat-menu-item>Angular</button>
+  <button mat-menu-item>React</button>
+</mat-menu>
+<mat-menu #bMenu="matMenu">
+  <button mat-menu-item>NodeJS</button>
+  <button mat-menu-item>Python</button>
+  <button mat-menu-item>PHP</button>
+</mat-menu>
+
+<mat-sidenav-container color="primary" >
+    <mat-sidenav [(opened)]='opened' (opened)="log('opened')" (closed)="log('closed')" mode="side" #sidenav>Sidenav
+    </mat-sidenav>
+    <mat-sidenav-content> 
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->

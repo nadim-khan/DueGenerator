@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+      <mat-card-title >Set Weekoff</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="section" >
+      <mat-checkbox class="margin" *ngFor="let data of data" [(ngModel)]="data.val">{{data.day|uppercase}}</mat-checkbox>
+    </section>
+  </mat-card-content>
+  <mat-card-actions align="center">
+      <button  mat-raised-button  type="submit"  color="primary" (click)="weekOffSet()">Save <mat-icon>save</mat-icon></button>
+  </mat-card-actions>
+  
+</mat-card>

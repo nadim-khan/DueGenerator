@@ -1,0 +1,78 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title >Due Date Result</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="mat-elevation-z8">
+            <tr>
+                <th>Frequency</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Weekly Off</th>
+                <th>Due Date</th>
+            </tr>
+            <tr>
+                <td style="font-size:15px ;">Daily</td>
+                <td>{{dueStart}}</td>
+                <td>{{dueEnd}}</td>
+                <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
+                <td>
+                    <ul *ngIf="dailyDates">
+                        <li *ngFor="let days of dailyDates" > {{days}}</li>
+                    </ul>
+                    <span *ngIf="!dailyDates"><a [routerLink]="['/frequency']">Generate it </a></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:15px ;">Weekly</td>
+                <td>{{dueStart}}</td>
+                <td>{{dueEnd}}</td>
+                <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
+                <td>
+                    <ul *ngIf="weeklyReport">
+                        <li *ngFor="let days of weeklyReport" > {{days}}</li>
+                    </ul>
+                    <span *ngIf="!weeklyReport"><a [routerLink]="['/frequency']">Generate it </a></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:15px ;">Monthly</td>
+                <td>{{dueStart}}</td>
+                <td>{{dueEnd}}</td>
+                <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
+                <td>
+                    <ul>
+                        <span *ngIf="MonthlyReport" ><li *ngFor="let days of MonthlyReport" > {{days}}</li></span>
+                        <span *ngIf="!MonthlyReport"><a [routerLink]="['/frequency']">Generate it </a></span>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:15px ;">Random (Weekly)</td>
+                <td>{{dueStart}}</td>
+                <td>{{dueEnd}}</td>
+                <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
+                <td>
+                    <div *ngIf="randomWeek"><span *ngFor="let day of randomWeek" >{{day}},</span> </div>
+                    <span *ngIf="!randomWeek"><a [routerLink]="['/frequency']">Generate it </a></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:15px ;">Random (Monthly)</td>
+                <td>{{dueStart}}</td>
+                <td>{{dueEnd}}</td>
+                <td><span *ngFor="let off of weekOffs">{{off}},</span></td>
+                <td>
+                    <ul *ngIf="randomMonth">
+                        <li *ngFor="let days of randomMonth" > {{days}}</li>
+                    </ul>
+                    <span *ngIf="!randomMonth"><a [routerLink]="['/frequency']">Generate it </a></span>
+                </td>
+            </tr>
+        </table>
+    </mat-card-content>
+    <mat-card-actions align="center">
+        <button  mat-raised-button  type="submit"  color="primary">Print <mat-icon>print</mat-icon></button>
+        <button  mat-raised-button  type="submit"  (click)="routeToFrequency()"color="primary">Frequency <mat-icon>open_in_new</mat-icon></button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,67 @@
+.navbar{
+    justify-content: space-between;
+}
+span{
+    padding-right: 1rem;
+}
+.logo{
+    color:red;
+    font-size: 40px;
+    float:right;
+    margin-right:0;
+    padding-left:5vw;
+    cursor:pointer;
+}
+
+mat-sidenav-container{
+    height:90%;
+}
+mat-sidenav,mat-sidenav-content{
+    padding:5px 16px 0 16px;
+}
+mat-sidenav{
+    opacity: 0.9;
+    width:200px;
+}
+mat-sidenav .top{
+    margin-top:15px;
+}
+.mat-icon{
+    cursor:pointer;
+}
+.mat-icon:hover{
+    transform: scale(1.2);
+    transition: ease-out;
+    cursor:pointer;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .logo{
+        color:red;
+        font-size: 25px;
+        float:right;
+        margin-right:0;
+        padding-left:80px;
+        text-align: center;
+        cursor:pointer;
+    }
+    span{
+        display:none;
+    }
+    mat-sidenav .top{
+        margin-top:5px;
+    }
+    mat-sidenav{
+        opacity: 0.9;
+        width:120px;
+    }
+    mat-sidenav,
+    mat-sidenav-content{
+        padding:5px 16px 0 2px;
+    }
+    mat-sidenav-content{
+        width:60vw;
+    }
+  }

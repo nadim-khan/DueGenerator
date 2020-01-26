@@ -1,0 +1,71 @@
+<mat-card >
+  <mat-card-header>
+      <mat-card-title >
+        <span *ngIf="startDate">Generate Daily Report from <b>{{startDate}}</b> to <b>{{endDate}}</b></span>
+        <div >
+          
+          <p style="color:red" *ngIf="!startDate || !endDate"> *<a [routerLink]='["/startEndSet"]'>Set Dates</a></p>
+        
+        </div>
+      </mat-card-title>
+  </mat-card-header>
+</mat-card>
+<mat-accordion>
+  
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        DAILY
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-action-row>
+      <button mat-raised-button color="primary" (click)="generateDaily()">Generate <mat-icon>send</mat-icon></button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  
+  
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        WEEKLY
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <section class="section" >
+      <mat-checkbox class="margin1" *ngFor="let weekRepo of weekRepo" [(ngModel)]="weekRepo.val">{{weekRepo.day|uppercase}}</mat-checkbox>
+    </section>
+    <mat-action-row>
+      <button mat-raised-button color="primary" (click)="generateWeekly()">Generate <mat-icon>send</mat-icon></button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  
+  
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        MONTHLY
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <section class="section" >
+        <mat-checkbox class="margin" *ngFor="let months of months" [(ngModel)]="months.val">{{months.month|uppercase}}</mat-checkbox>
+      </section>
+    <mat-action-row>
+      <button mat-raised-button color="primary" (click)="generateMonthly()">Generate <mat-icon>send</mat-icon></button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  
+  
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        RANDOM
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="randomChoice">
+      <mat-radio-button value="randomWeekly">Weekly</mat-radio-button>
+      <mat-radio-button value="randomMonthly">Monthly</mat-radio-button>
+    </mat-radio-group>
+    <mat-action-row>
+      <button mat-raised-button color="primary" (click)="generateRandom()">Generate <mat-icon>send</mat-icon></button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
