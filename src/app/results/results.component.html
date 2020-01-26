@@ -11,7 +11,7 @@
                 <th>Weekly Off</th>
                 <th>Due Date</th>
             </tr>
-            <tr>
+            <tr *ngIf="showDaily">
                 <td style="font-size:15px ;">Daily</td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
@@ -23,7 +23,7 @@
                     <span *ngIf="!dailyDates"><a [routerLink]="['/frequency']">Generate it </a></span>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="showWeekly">
                 <td style="font-size:15px ;">Weekly</td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
@@ -35,7 +35,7 @@
                     <span *ngIf="!weeklyReport"><a [routerLink]="['/frequency']">Generate it </a></span>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="showMonthly">
                 <td style="font-size:15px ;">Monthly</td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
@@ -47,7 +47,7 @@
                     </ul>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="showRandomWeekly">
                 <td style="font-size:15px ;">Random (Weekly)</td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>
@@ -57,7 +57,7 @@
                     <span *ngIf="!randomWeek"><a [routerLink]="['/frequency']">Generate it </a></span>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="showRandomMonthly">
                 <td style="font-size:15px ;">Random (Monthly)</td>
                 <td>{{dueStart}}</td>
                 <td>{{dueEnd}}</td>

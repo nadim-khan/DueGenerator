@@ -10,6 +10,7 @@ export class DateManageService {
   fromDate;
   toDate;
   i;
+  j;
   weekR1;
   weekR2;
   monthlyReport = [];
@@ -24,6 +25,7 @@ export class DateManageService {
   currentDateWeek;
   currentDateRMonth;
   dateSet;
+  resultShowSet = [];
   constructor() {}
 
   dateRange() {
@@ -47,6 +49,7 @@ export class DateManageService {
       }
       this.currentDate = moment(this.currentDate).add(1, 'days');
     }
+    this.resultShowSet[0] = true;
     return dailyDate;
 
   }
@@ -60,10 +63,10 @@ export class DateManageService {
         while ( moment(this.currentDateWeek) <= moment(this.startEndDates[0].endDate)) {
           weeklyDate.push(moment(this.currentDateWeek).day(this.weekRepoDate[this.i].id).format('dddd, MMMM Do YYYY'));
           this.currentDateWeek = moment(this.currentDateWeek).add(7, 'days');
-
         }
       }
     }
+    this.resultShowSet[1] = true;
     return weeklyDate;
   }
   generateMonthly() {
@@ -75,6 +78,7 @@ export class DateManageService {
         console.log('==>', moment(this.startEndDates[0].startDate).month(this.i).format('dddd, MMMM Do YYYY'));
       }
     }
+    this.resultShowSet[2] = true;
     this.monthlyReport = monthlyDate;
     return monthlyDate;
 
@@ -82,19 +86,17 @@ export class DateManageService {
 
   generateRandomWeek() {
     this.randomWeek = [];
-    let val1;
-    let val2;
     this.weekOff.forEach(elements => {
       if (elements.val === false) {
         this.currentDate = moment(this.startEndDates[0].startDate).add(Math.floor(Math.random() * 6 + 1));
         if ( moment(this.currentDate).add(Math.floor(Math.random() * 6 + 1)) <= moment(this.startEndDates[0].endDate)) {
-        val1 = moment(this.currentDate).add(6, 'days').format('dddd, MMMM Do YYYY');
-        val2 = moment(this.currentDate).add(7, 'days').format('dddd, MMMM Do YYYY');
+          for (this.i = 0; this.i <= 1; this.i++) {
+            this.randomWeek[this.i] = moment(this.currentDate).add(6 + this.i, 'days').format('dddd, MMMM Do YYYY');
+          }
         }
       }
     });
-    this.randomWeek.push(val1);
-    this.randomWeek.push(val2);
+    this.resultShowSet[3] = true;
     return this.randomWeek;
 
   }
@@ -104,13 +106,21 @@ export class DateManageService {
     this.weekOff.forEach(elements => {
       if (elements.val === false) {
         this.currentMonth = moment(this.startEndDates[0].startDate).month();
-        this.currentDateRMonth =  moment(this.startEndDates[0].startDate);
-        for (this.i = 0; this.i < 5 ; this.i ++) {
-          this.randomMonth[this.i] = moment(this.currentDate).add(Math.floor(Math.random() * 8 + 1), 'days').format('dddd, MMMM Do YYYY');
-          this.currentDateRMonth = this.currentDateWeek = moment(this.currentDateWeek).add(Math.floor(Math.random() * 2 + 1), 'days');
+        this.currentDateRMonth =  moment(this.startEndDates[0].startDate).add(Math.floor(Math.random() * 9 + 1), 'days');
+        for (this.i = 0; this.i <= 20; this.i++) {
+          if ( this.currentDateRMonth <= moment(this.startEndDates[0].endDate
+            || this.currentDateRMonth.month() === this.currentMonth
+            || this.currentDateRMonth.isoWeekday() === 6
+            || this.currentDateRMonth.isoWeekday() === 7 )) {
+              for (this.j = 0; this.j < 5 ; this.j ++) {
+                this.randomMonth[this.j] = moment(this.currentDateRMonth).format('dddd, MMMM Do YYYY');
+                this.currentDateRMonth = moment(this.startEndDates[0].startDate).add(Math.floor(Math.random() * 6 + 2), 'days');
+          }
         }
       }
+    }
     });
+    this.resultShowSet[4] = true;
     return this.randomMonth;
   }
 }

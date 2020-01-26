@@ -65,10 +65,12 @@ export class StartEndComponent implements OnInit {
     this.formData = this.startEndForm.value;
     if (this.formData.choice === 'occur' && this.formData.occurence === '' ) {
       alert('Please fill the Occurence Value');
+      location.reload();
     }
     if ( this.formData.choice === 'calender'   ) {
       if ( this.formData.endDate < this.formData.startDate) {
         alert('Please Select the appropriate date');
+        location.reload();
       }
     }
     console.log('Form Value : ', this.startEndForm.value);
