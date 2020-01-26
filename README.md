@@ -1,3 +1,16 @@
+# Project Information
+
+Due date generator.
+
+Build on Angular material , Moment JS (for Dates)
+
+To Run the project :-
+1. clone the project from the repository  
+2. run npm install (for dependencies).
+3. if any fix is there then run :-  npm audit fix
+4. start the project   :-  ng serve --open
+
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
