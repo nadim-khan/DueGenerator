@@ -1,6 +1,6 @@
-<mat-toolbar  class="navbar" class="mat-elevation-z3">
+<!-- <mat-toolbar class="navbar" class="mat-elevation-z3">
     <mat-icon (click)="sidenav.toggle()" [routerLink]="['/']">reorder</mat-icon>
-		<span>
+    <span>
       <a mat-button color="primary" [routerLink]="['/startEndSet']">Start and End Date</a>
       <a mat-button color="primary" [routerLink]="['/weeklyOff']">Weekly Off</a>
       <a mat-button color="primary" [routerLink]="['/frequency']">Frequency</a>
@@ -8,14 +8,119 @@
     </span>
     <div class="logo">Due Date Generater</div>
 </mat-toolbar>
-<mat-sidenav-container color="primary" >
-    <mat-sidenav opened='true'  mode="side" #sidenav class="sidenav-fab-container" fullscreen >
-      <a class="top" mat-button color="accent" [routerLink]="['/startEndSet']">Start and End Date</a>
-		  <a mat-button color="accent" [routerLink]="['/weeklyOff']">Weekly Off</a>
-      <a mat-button color="accent" [routerLink]="['/frequency']">Frequency</a>
-      <a mat-button color="accent" [routerLink]="['/results']">Results</a>
+<mat-sidenav-container color="primary">
+    <mat-sidenav opened='true' mode="side" #sidenav class="sidenav-fab-container" fullscreen>
+        <a class="top" mat-button color="accent" [routerLink]="['/startEndSet']">Start and End Date</a>
+        <a mat-button color="accent" [routerLink]="['/weeklyOff']">Weekly Off</a>
+        <a mat-button color="accent" [routerLink]="['/frequency']">Frequency</a>
+        <a mat-button color="accent" [routerLink]="['/results']">Results</a>
     </mat-sidenav>
-    <mat-sidenav-content> 
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- Toolbar -->
+
+<header class="header mat-elevation-z3" [class.alternative]="otherTheme">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <mat-icon (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
+
+            <span routerLink="/" class="logo" matTooltip="Home"></span>
+            <span>My Dues</span>
+            <div class="profile">
+                <mat-menu #themeMenu="matMenu" xPosition="before">
+
+                    <mat-radio-group (change)="themeOptions($event)">
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-radio-button value="dark">Dark</mat-radio-button>
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                <mat-radio-button value="blue">Blue</mat-radio-button>
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                <mat-radio-button value="green">Green</mat-radio-button>
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                <mat-radio-button value="orange">Orange</mat-radio-button>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-radio-group>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Select a theme">
+                  <mat-icon>format_color_fill</mat-icon>
+                </button>
+                <a mat-button *ngIf="!user && opened" color="accent" routerLink="/auth/login">
+                    <mat-icon>person</mat-icon> Login
+                </a>
+                <a mat-button *ngIf="!user && opened" color="accent" routerLink="/auth/register">
+                    <mat-icon>person_add</mat-icon> Register
+                </a>
+                <a mat-icon-button *ngIf="!user && !opened" color="accent" routerLink="/auth/login">
+                    <mat-icon matTooltip="Login">person</mat-icon>
+                </a>
+                <a mat-icon-button *ngIf="!user && !opened" color="accent" routerLink="/auth/register">
+                    <mat-icon matTooltip="Register">person_add</mat-icon>
+                </a>
+                <a mat-button *ngIf="user" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
+                    <mat-icon>account_circle</mat-icon> {{username}}
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </a>
+
+                <mat-menu #profileMenu="matMenu" xPosition="before">
+                    <div mat-menu-item>
+                        {{email}}
+                    </div>
+                    <button mat-menu-item class="logout" (click)="logout()">Logout</button>
+                </mat-menu>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</header>
+
+<mat-sidenav-container>
+    <!-- Sidenav -->
+    <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/home']">
+                <mat-icon>home</mat-icon> Home
+            </a>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/startEndSet']">
+                <mat-icon>access_alarm</mat-icon> Start and End Date
+            </a>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/weeklyOff']">
+                <mat-icon>bubble_chart</mat-icon> Weekly Off
+            </a>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/frequency']">
+                <mat-icon>timelapse</mat-icon> Frequency
+            </a>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/results']">
+                <mat-icon>list</mat-icon> Results
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/events']">
+                <mat-icon>list</mat-icon> Events
+            </a>
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/special']">
+                <mat-icon>list</mat-icon> Members
+            </a>
+            <div class="bottomMenu">
+                <a (click)="onModeSwitch($event)" mat-icon-button matTooltip="Switch Mode">
+                    <mat-icon (click)="hide = !hide">{{hide ? ' brightness_low ' : 'brightness_high'}}</mat-icon> Turn <span *ngIf="hide">Dark Mode</span><span *ngIf="!hide">Light mode</span>
+                </a>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Main content -->
+    <mat-sidenav-content>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

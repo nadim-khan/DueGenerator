@@ -1,2 +1,286 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    justify-content: space-between;
+}
+
+.active {
+    background: #7b1fa2;
+    color: #fff;
+}
+
+.user-profile {
+    margin-left: 15px;
+}
+
+.mat-sidenav-container {
+    height: 100%;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.mat-nav-list .mat-list-item {
+    font-size: 15px;
+}
+
+.nav-tool-items {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.user-profile {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.hamburger {
+    visibility: hidden !important;
+}
+
+.mat-sidenav,
+.mat-sidenav-content {
+    padding: 15px;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 16px;
+    position: relative;
+    height: inherit;
+    font-size: 12px;
+}
+
+mat-list-base[dense] .mat-list-item {
+    font-size: 12px;
+}
+
+.mat-list-item.active {
+    background: rgba(0, 0, 0, .04);
+}
+
+.mat-sidenav-content {
+    padding: 25px 40px 0;
+}
+
+.mat-sidenav {
+    width: 17%;
+}
+
+.header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+mat-sidenav mat-icon {
+    margin-right: 12px;
+}
+
+.hamburger {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.mat-radio-button,
+.mat-radio-group {
+    margin-right: 25px;
+}
+
+.controlers-wrapper>* {
+    width: 100%;
+    padding: 0;
+}
+
+.misc-bottom-padding {
+    margin: 8px 0 10px;
+}
+
+.misc-bottom-padding mat-label {
+    margin-right: 15px;
+}
+
+mat-radio-group mat-radio-button {
+    margin-left: 5px;
+}
+
+.button-wrapper button {
+    margin-right: 5px;
+}
+
+table.mat-table,
+table {
+    width: 100%;
+}
+
+.inner-wrapper {
+    padding: 15px 0 130px;
+    width: 100%;
+}
+
+.inner-wrapper mat-card {
+    display: inline-block;
+    margin: 0 6% 0 0;
+    vertical-align: top;
+    width: 44%;
+}
+
+.full-wrapper {
+    width: 100%;
+}
+
+.multiple-items {
+    position: relative;
+}
+
+.multiple-items .tooltip-info {
+    right: 0;
+    top: 7px;
+    cursor: pointer;
+    color: #a1a7c7;
+    position: absolute;
+    font-size: 20px;
+}
+
+body .push-right {
+    margin-right: 10px;
+}
+
+.no-data {
+    text-align: center;
+    padding-top: 30px;
+    color: #6c75a9;
+}
+
+.button-wrapper {
+    margin: 20px 0 0 0;
+}
+
+.searchField {
+    margin-top: -25px;
+    padding-top: 15px;
+    width: 75%;
+    z-index: 1000;
+    position: fixed;
+}
+
+.searchField {
+    margin-top: -25px;
+    padding-top: 15px;
+    width: 75%;
+    z-index: 1000;
+    position: fixed;
+}
+
+.mat-card-actions {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .searchField {
+        margin-top: -25px;
+        padding-top: 15px;
+        width: 90%;
+        z-index: 1000;
+        position: fixed;
+    }
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .searchField {
+        margin-top: -25px;
+        padding-top: 15px;
+        width: 90%;
+        z-index: 1000;
+        position: fixed;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .searchField {
+        margin-top: -25px;
+        padding-top: 15px;
+        width: 75%;
+        z-index: 1000;
+        position: fixed;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .searchField {
+        margin-top: -25px;
+        padding-top: 15px;
+        width: 75%;
+        z-index: 1000;
+        position: fixed;
+    }
+}
+
+@media (max-width: 1024px) {
+    .inner-wrapper mat-card {
+        width: 100%;
+    }
+    .mat-sidenav-content {
+        padding: 20px 20px 0;
+    }
+    .misc-bottom-padding mat-label {
+        display: block;
+        padding-bottom: 10px;
+    }
+    .mat-sidenav {
+        width: 200px;
+    }
+    .mat-nav-list .mat-list-item {
+        font-size: 14px;
+    }
+    .searchField {
+        width: 100%;
+    }
+    .searchField {
+        margin-top: -25px;
+        padding-top: 15px;
+        width: 75%;
+        z-index: 1000;
+        position: fixed;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-tool-items {
+        margin-right: 0;
+    }
+    .hamburger {
+        visibility: visible !important;
+    }
+}

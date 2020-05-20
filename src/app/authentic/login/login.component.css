@@ -1,0 +1,28 @@
+.login-card {
+    width: 80%;
+    margin: 2%;
+    margin: 0 10% 0 10%;
+}
+
+.mat-form-field {
+    width: 80%;
+    margin: 0 10% 0 10%;
+}
+
+.mat-card-actions {
+    text-align: center;
+}
+
+.mat-card-title {
+    text-align: center;
+}
+
+.fb {
+    background-color: rgba(37, 37, 141, 0.815);
+    width: 40%
+}
+
+.google {
+    background-color: rgba(207, 32, 32, 0.815);
+    width: 40%
+}
